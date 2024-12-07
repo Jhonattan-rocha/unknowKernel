@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "kernel.h": "c",
+        "idt.h": "c",
+        "stdint.h": "c",
+        "memory.h": "c",
+        "status.h": "c",
+        "paging.h": "c",
+        "io.h": "c",
+        "config.h": "c"
+    }
+}

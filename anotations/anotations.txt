@@ -1,0 +1,35 @@
+nasm -f bin ./boot.asm -o ./boot.bin
+// não existe conceito de arquivos nesse nivel do processo, então para poder executar, precisa converter para um arquivo binario, precisa rodar 2 vezes o comando
+
+ndisasm ./boot.bin
+// "executar" os arquivos binarios
+
+
+// para ser considerado "bootavel", precisa ter uma assinatura de 512/511 bytes especifica no primeiro bloco de memória
+qemu-system-x86_64 -hda ./boot.bin
+
+//executando os bytes no emulador
+
+// ret é para retornar a subrotina que chamou
+
+// lodsb comando para iterar sobre um ponteiro
+// cmp é compare, je é jump equal, mov é move
+
+// LBA(Logical block address) representa os setores do seu disco
+
+// para calcular o LBA, precisa dividir por 512, que é o buffer
+
+// a interrupção provida pela BIOS para disco é 13h, em 16 bit
+// para 32 bit, vc precisaria criar o seu próprio drive para acessar o disco
+// jc jump carrie
+
+
+// gdb 
+// target remote | qemu-system-x86_64 -hda ./boot.bin -S -gdb stdio
+comando para rodar o sistema operacional propriamente dito
+
+
+add-symbol-file ./build/kernelfull.o 0x100000
+adicionar arquivos em endereços especificos no gdb
+
+braek label para adionar um braek point no gdb
