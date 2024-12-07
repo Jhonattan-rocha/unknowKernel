@@ -110,7 +110,6 @@ void kernel_main()
 
     ptr[0] = 'B';
     ptr[1] = 'A';
-
     print(ptr2);
 
     print(ptr);

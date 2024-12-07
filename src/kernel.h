@@ -7,5 +7,4 @@
 
 void kernel_main();
 void print(const char* str);
-void terminal_writechar(char c, char colour);
 #endif
