@@ -23,7 +23,7 @@ void no_interrupt_handler()
 
 void idt_zero()
 {
-    print("DivisionByZeroError\n");
+    print("DivisionByZeroError");
 }
 
 void idt_set(int interrupt_nu, void* address)
