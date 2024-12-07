@@ -6,13 +6,37 @@
 
 struct idt_desc idt_descriptores[UNKNOWKERNEL_TOTAL_INTERRUPTS];
 struct idtr_desc idtr_descriptor;
+char keyboard_buffer[KEYBOARD_BUFFER_SIZE];
+int buffer_pos = 0;
+const char scancode_to_char[] = {
+    0,  27, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', '\b',
+    '\t', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\n', 0,
+    'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '`', 0, '\\', 'z',
+    'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 0, '*', 0, ' ', 0
+};
 
 extern void idt_load(struct idtr_desc* ptr);
 extern void int21h();
 extern void no_interrupt();
 
 void int21h_handler() {
-    print("KeyBoard Pressed");
+    // Lê o scan code da porta 0x60
+    unsigned char scan_code = insb(KEYBOARD_PORT);
+
+    // Verifica se é um scan code válido (tecla pressionada)
+    if (scan_code < sizeof(scancode_to_char)) {
+        char key = scancode_to_char[scan_code];
+        
+        // Armazena no buffer se for um caractere imprimível
+        if (key != 0 && buffer_pos < KEYBOARD_BUFFER_SIZE - 1) {
+            keyboard_buffer[buffer_pos++] = key;
+            keyboard_buffer[buffer_pos] = '\0'; // Termina a string
+        }
+
+        terminal_writechar(key, 15);
+    }
+
+    // Envia o End of Interrupt (EOI) para o PIC
     outb(0x20, 0x20);
 }
 
