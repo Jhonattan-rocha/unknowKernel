@@ -15,5 +15,6 @@
 #define UNKNOWKERNEL_HEAP_TABLE_ADDRESS 0x00007E00 //esse endereço é para a heap table do kernel e determina quanto de ram pode usar
 #define KEYBOARD_PORT 0x60
 #define KEYBOARD_BUFFER_SIZE 256
+#define UNKNOWKERNEL_SECTOR_SIZE 512
 
 #endif

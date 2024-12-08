@@ -90,6 +90,8 @@ void kernel_main()
     print("Terminal clean success");
     kheap_init();
     print("HEAP initialize success");
+    disk_search_and_init();
+    print("Search and initialize the disks success");
     idt_init();
     print("IDT initialize success");
 
@@ -102,9 +104,6 @@ void kernel_main()
 
     enable_paging();
     print("Paging initialize success");
-
-    char buf[512];
-    disk_read_sector(0, 1, buf);
 
     enable_interrupts();
     print("Interrupt enable success");
