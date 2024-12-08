@@ -7,6 +7,9 @@
         "status.h": "c",
         "paging.h": "c",
         "io.h": "c",
-        "config.h": "c"
+        "config.h": "c",
+        "*.tcc": "c",
+        "algorithm": "c",
+        "string.h": "c"
     }
 }
