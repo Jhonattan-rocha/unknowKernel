@@ -33,3 +33,7 @@ add-symbol-file ./build/kernelfull.o 0x100000
 adicionar arquivos em endereços especificos no gdb
 
 braek label para adionar um braek point no gdb
+
+// lba é uma forma de referenciar setores reais dos discos, seguindo uma lógica parecida com as páginas
+// onde o endereço é na verade virutal, que referencia outro endereço fisico, permitindo o computador
+// trabalhar com uma lógica sequencial, mas sem ter os problemas de fragmentação da memória
