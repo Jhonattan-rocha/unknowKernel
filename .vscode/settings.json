@@ -10,6 +10,7 @@
         "config.h": "c",
         "*.tcc": "c",
         "algorithm": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "file.h": "c"
     }
 }

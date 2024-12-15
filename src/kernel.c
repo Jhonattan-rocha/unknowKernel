@@ -9,6 +9,7 @@
 #include "string/string.h"
 #include "fs/pparser.h"
 #include "disk/streamer.h"
+#include "fs/file.h"
 
 uint16_t* video_mem = 0;
 uint16_t terminal_row = 0;
@@ -82,6 +83,8 @@ void kernel_main()
     print("Terminal clean success");
     kheap_init();
     print("HEAP initialize success");
+    fs_init();
+    print("Filesystem initialize success");
     disk_search_and_init();
     print("Search and initialize the disks success");
     idt_init();
@@ -100,9 +103,7 @@ void kernel_main()
     enable_interrupts();
     print("Interrupt enable success");
 
-    struct disk_stream* stream = diskstreamer_new(0);
-    diskstreamer_seek(stream, 0x201);
-    unsigned char c = 0;
-    diskstreamer_read(stream, &c, 1);
+    char buf[20];
+    strcpy(buf, "hello!");
     while(1) {}
 }
