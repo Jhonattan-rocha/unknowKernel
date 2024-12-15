@@ -39,6 +39,7 @@ void disk_search_and_init()
     memset(&disk, 0, sizeof(disk));
     disk.type = UNKNOWKERNEL_DISK_TYPE_REAL;
     disk.sector_size = UNKNOWKERNEL_SECTOR_SIZE;
+    disk.filesystem = fs_resolve(&disk);
 }
 
 struct disk* disk_get(int index)
