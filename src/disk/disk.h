@@ -10,8 +10,9 @@ struct disk
     UNKNOWKERNEL_DISK_TYPE type;
     int sector_size;
     struct filesystem* filesystem;
+    char model[41];
 };
-void disk_search_and_init();
+unsigned short disk_search_and_init();
 struct disk* disk_get(int index);
 int disk_read_block(struct disk* idisk, unsigned int lba, int total, void* buf);
 

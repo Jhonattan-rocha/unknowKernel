@@ -8,7 +8,7 @@ jmp short start
 nop
 
 ; FAT16 Header
-OEMIdentifier           db 'PEACHOS '
+OEMIdentifier           db 'UKERNEL '
 BytesPerSector          dw 0x200
 SectorsPerCluster       db 0x80
 ReservedSectors         dw 200
@@ -27,7 +27,7 @@ DriveNumber             db 0x80
 WinNTBit                db 0x00
 Signature               db 0x29
 VolumeID                dd 0xD105
-VolumeIDString          db 'PEACHOS BOO'
+VolumeIDString          db 'UKERNEL BOO'
 SystemIDString          db 'FAT16   '
 
 
