@@ -11,7 +11,6 @@
         "*.tcc": "c",
         "algorithm": "c",
         "string.h": "c",
-        "file.h": "c",
-        "disk.h": "c"
+        "file.h": "c"
     }
 }
